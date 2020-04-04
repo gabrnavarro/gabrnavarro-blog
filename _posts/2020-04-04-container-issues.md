@@ -8,9 +8,9 @@ tags: ['docker', 'jenkins', 'linux']
 At work, we experienced an issue with Jenkins builds starting to randomly fail on the slaves
 with a pretty obscure error:
 
-```
-OCI runtime create failed: container_linux.go:345: starting container process caused "process_linux.go:424: container init caused \"join session keyring: create session key: disk quota exceeded\"": unknown
-```
+> OCI runtime create failed: container_linux.go:345:
+> starting container process caused "process_linux.go:424: container init caused \"join session keyring: create session
+> key: disk quota exceeded\"": unknown
 
 We aggresively use docker images to build and deploy artifacts as well as run various scripts. Almost every shell script is run inside a docker container to make sure that the configuration of the "machines" are the same for all runs. This means we have hundreds of containers in the slaves, although most of them are not really running.
 
@@ -95,7 +95,7 @@ Aha. That limit is pretty low, considering we have about 243 keyrings. So I bump
 and have found similar issues after some deep googling. Two things/bugs i learned:
 
 
-- [The default limit for number of keyrings is high, but the memory they can use is extremely low](https://github.com/opencontainers/runc/pull/582)
+- [The default limit for number of keyrings is high, but the disk space they can use is extremely low](https://github.com/opencontainers/runc/pull/582)
 - [A unique session key is created for every linux container](https://github.com/opencontainers/runc/issues/726) which was why the issue only happened when there were too many containers in the slaves already.
 
 ## TLDR;/ Solution
