@@ -12,7 +12,7 @@ with a pretty obscure error:
 OCI runtime create failed: container_linux.go:345: starting container process caused "process_linux.go:424: container init caused \"join session keyring: create session key: disk quota exceeded\"": unknown
 ```
 
-We aggresively use docker images to build and deploy artifacts as well as run various scripts. Almost every shell script is run inside a docker container to make sure that the configuration of the "machines" are the same for all runs.
+We aggresively use docker images to build and deploy artifacts as well as run various scripts. Almost every shell script is run inside a docker container to make sure that the configuration of the "machines" are the same for all runs. This means we have hundreds of containers in the slaves, although most of them are not really running.
 
 
 One morning, everything started to break, and our deploy jobs were affected, so I sprung into action and took a look.
@@ -96,7 +96,7 @@ and have found similar issues after some deep googling. Two things/bugs i learne
 
 
 - [The default limit for number of keyrings is high, but the memory they can use is extremely low](https://github.com/opencontainers/runc/pull/582)
-- [A unique session key is created for every linux container](https://github.com/opencontainers/runc/issues/726)
+- [A unique session key is created for every linux container](https://github.com/opencontainers/runc/issues/726) which was why the issue only happened when there were too many containers in the slaves already.
 
 ## TLDR;/ Solution
 
