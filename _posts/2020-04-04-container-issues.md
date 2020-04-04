@@ -5,8 +5,6 @@ categories: ['blog']
 tags: ['docker', 'jenkins', 'linux']
 ---
 
-# Debugging disk quota error in docker containers
-
 At work, we experienced an issue with Jenkins builds starting to randomly fail on the slaves
 with a pretty obscure error:
 
