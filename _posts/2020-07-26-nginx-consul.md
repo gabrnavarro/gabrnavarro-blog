@@ -166,7 +166,7 @@ In here, the server is just initialized and is listening at port 80. I had to us
   }
 ```
 
-In here, we are telling nginx to forward requests from the root path to `http://www,sample_website.com` plus the value of the key `foo` in your consul KV. If this value changes, then new requests are routed to the new URI. Consul template will then restart on its own.
+In here, we are telling nginx to forward requests from the root path to `http://www.sample_website.com` plus the value of the key `foo` in your consul KV. If this value changes, then new requests are routed to the new URI. Consul template will then restart on its own.
 
 
 
