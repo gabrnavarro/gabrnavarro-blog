@@ -11,6 +11,7 @@ description:
     I am a Software Engineer with expertise in API Development, DevOps and Infrastructure.
     This is where I post my experiences with code at work, or in my personal time.
     I might also post stuff about other things I like, like cooking and video games.
+    I can be reached via email at gabrnavarro@gmail.com for any questions.
 author: Gabriel Kelly Navarro
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: en
@@ -233,7 +234,6 @@ social_icons:
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
   GitHub: github
   Twitter: twitter
-  Weibo: weibo
 
 
 # Sidebar Avatar
